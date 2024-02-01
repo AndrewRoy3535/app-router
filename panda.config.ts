@@ -6,12 +6,14 @@ export default defineConfig({
 
   // Where to look for your css declarations
   include: [
-    "./src/components/**/*.{ts,tsx,js,jsx}",
+    "./src/component/**/*.{ts,tsx,js,jsx}",
     "./src/app/**/*.{ts,tsx,js,jsx}",
   ],
 
   // Files to exclude
   exclude: [],
+
+  jsxFramework: "react",
 
   // Useful for theme customization
   theme: {
