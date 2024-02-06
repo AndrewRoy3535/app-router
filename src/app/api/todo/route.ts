@@ -1,7 +1,6 @@
 import Todo from "@/model/todos";
 import connection from "@/utils/connect";
 import { NextResponse } from "next/server";
-import mongoose from "mongoose";
 
 export const GET = async () => {
   try {
@@ -31,24 +30,18 @@ export async function POST(req: any) {
 
 export async function DELETE(req: any, res: any) {
   try {
-    await connection();
+    const body = await req.json();
 
-    const { id } = req.body;
+    const { _id } = body;
+
+    const id = await Todo.findById(_id);
+
     if (!id) {
-      return res.status(400).json({ error: "Missing todo ID in request body" });
+      return NextResponse.json({ message: "Todo does not exists" });
     }
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({ error: "Invalid todo ID format" });
-    }
-
-    const deletedTodo = await Todo.findByIdAndDelete(id);
-    if (!deletedTodo) {
-      return res.status(404).json({ error: "Todo not found" });
-    }
-
-    res.status(200).json({ message: "Todo deleted successfully" });
+    await id.deleteOne();
+    return NextResponse.json({ message: "A todo has been deleted" });
   } catch (error) {
-    console.error("Error deleting todo:", error);
-    res.status(500).json({ error: "Failed to delete todo" });
+    return NextResponse.json({ message3: error });
   }
 }

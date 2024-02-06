@@ -1,5 +1,5 @@
-import { cva } from "../../../styled-system/css";
-import { styled } from "../../../styled-system/jsx";
+import { cva } from "../../../../styled-system/css";
+import { styled } from "../../../../styled-system/jsx";
 
 const buttonRecipe = cva({
   base: {

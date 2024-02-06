@@ -1,14 +1,32 @@
-import { box } from "../../../styled-system/patterns";
+"use client";
+import { box } from "../../../../styled-system/patterns";
 
 type Props = {
-  id: string;
-  todo: string;
+  _id?: string;
+  todo?: string;
 };
 
-const Todorender = ({ id, todo }: Props) => {
+const Todorender = ({ _id, todo }: Props) => {
+  const handleDelete = async (_id: string) => {
+    try {
+      const res = await fetch("/api/todo", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ _id }),
+      });
+      if (!res.ok) {
+        throw new Error(`API request failed with status: ${res.status}`);
+      }
+      const data = await res.json();
+      console.log("Topic deleted:", data._id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div
-      key={id}
+      key={_id}
       className={box({
         display: "flex",
         border: "0.5px solid #ccc",
@@ -21,6 +39,7 @@ const Todorender = ({ id, todo }: Props) => {
       })}>
       <p>{todo}</p>
       <button
+        onClick={() => handleDelete(_id as string)}
         className={box({
           color: "red.900",
           cursor: "pointer",

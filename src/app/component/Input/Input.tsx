@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { css } from "../../../styled-system/css";
+import { css } from "../../../../styled-system/css";
 import { Button, Textarea } from "./recipes";
 
 type Props = {

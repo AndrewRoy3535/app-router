@@ -1,5 +1,5 @@
 import React from "react";
-import { box } from "../../../styled-system/patterns";
+import { box } from "../../../../styled-system/patterns";
 import Link from "next/link";
 
 type Props = {

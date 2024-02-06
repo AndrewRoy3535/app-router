@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { box } from "../../../../styled-system/patterns";
-import Input from "@/component/Input/Input";
-import Todorender from "@/component/Todorender/Todorender";
-import Header from "@/component/Header/Header";
+import Input from "@/app/component/Input/Input";
+import Todorender from "@/app/component/Todorender/Todorender";
+import Header from "@/app/component/Header/Header";
 
 interface Todo {
   _id: string;
@@ -37,7 +37,7 @@ const Todo = ({ todos }: Props) => {
 
   return (
     <>
-      <Header text='back' href='/' />
+      <Header text='Back' href='/' />
       <div
         className={box({
           display: "flex",
@@ -49,7 +49,7 @@ const Todo = ({ todos }: Props) => {
             h: "100vh",
           })}>
           {(newtds || todos).map((tds) => (
-            <Todorender key={tds._id} id={tds._id} todo={tds.todo} />
+            <Todorender key={tds._id} _id={tds._id} todo={tds.todo} />
           ))}
         </div>
         <Input fetchtds={fetchtds} />
