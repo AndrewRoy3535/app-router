@@ -46,7 +46,9 @@ const Todo = ({ todos }: Props) => {
         })}>
         <div
           className={box({
-            h: "100vh",
+            w: "2/4",
+            h: "90vh",
+            overflow: "scroll",
           })}>
           {(newtds || todos).map((tds) => (
             <Todorender key={tds._id} _id={tds._id} todo={tds.todo} />

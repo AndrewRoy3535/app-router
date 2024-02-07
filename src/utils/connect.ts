@@ -12,7 +12,6 @@ const connection = async () => {
   }
 };
 
-// Call the connection function
 connection().catch((err) => console.log(err));
 
 export default connection;

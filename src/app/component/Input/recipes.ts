@@ -14,6 +14,7 @@ const buttonRecipe = cva({
     visual: {
       sl: {
         w: "20%",
+        bg: "gray.800",
         md: { w: "10%" },
         borderRadius: "lg",
         boxShadow: "0 3px 10px rgb(0 0 0 / 0.5)",

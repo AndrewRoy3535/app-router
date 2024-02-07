@@ -12,7 +12,7 @@ function Header({ text, href }: Props) {
     <div
       className={box({
         display: "flex",
-        height: "50px",
+        h: "10vh",
         bg: "gray.700",
         justifyContent: "center",
         color: "gray.50",
