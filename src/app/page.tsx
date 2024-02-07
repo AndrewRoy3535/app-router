@@ -1,13 +1,7 @@
 import { box } from "../../styled-system/patterns";
-import RenderTodo from "./pages/rendertodo/page";
 import Header from "@/app/component/Header/Header";
-
-interface Todo {
-  _id: string;
-  todo: string;
-  createdAt: string;
-  updatedAt: string;
-}
+import Alltodos from "@/app/component/Alltodo/Alltodos";
+import { Todo } from "./types/types";
 
 export default async function Home() {
   const res = await fetch("http://localhost:3000/api/todo", {
@@ -25,10 +19,10 @@ export default async function Home() {
           display: "flex",
           justifyContent: "center",
           bg: "gray.800",
+          h: "90vh",
+          alignItems: "center",
         })}>
-        <div className={box({ md: { w: "34%" } })}>
-          <RenderTodo todos={todo} />
-        </div>
+        <Alltodos todos={todo} />
       </div>
     </>
   );
